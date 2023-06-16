@@ -43,7 +43,7 @@ nvim_rocks.install = function(name)
     print_list(result)
 
     -- copy shared objects to lua path that neovim finds them
-    vim.fn.systemlist("ln -s " .. plugin_path() .. "/lib/lua/5.1/*.so " .. plugin_path() .. "/lua")
+    vim.fn.systemlist("ln -s " .. plugin_path() .. "/lib/lua/5.1/* " .. plugin_path() .. "/lua")
 end
 
 nvim_rocks.remove = function(name)
@@ -52,8 +52,8 @@ nvim_rocks.remove = function(name)
     print_list(result)
 
     -- Update links to shared objects
-    vim.fn.systemlist("rm " .. plugin_path() .. "/lua/*.so")
-    vim.fn.systemlist("ln -s " .. plugin_path() .. "/lib/lua/5.1/*.so " .. plugin_path() .. "/lua")
+    vim.fn.systemlist("rm " .. plugin_path() .. "/lua/*")
+    vim.fn.systemlist("ln -s " .. plugin_path() .. "/lib/lua/5.1/* " .. plugin_path() .. "/lua")
 end
 
 nvim_rocks.list = function(simple, outdated)
